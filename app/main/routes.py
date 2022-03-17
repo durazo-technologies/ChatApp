@@ -1,6 +1,7 @@
 from flask import session, redirect, url_for, render_template, request
 from . import main
 from .forms import LoginForm
+import datetime
 
 
 @main.route('/', methods=['GET', 'POST'])
@@ -23,3 +24,8 @@ def chat():
     if name == '' or room == '':
         return redirect(url_for('.index'))
     return render_template('chat.html', name=name, room=room)
+
+
+@main.route('/time')
+def time():
+    return datetime.datetime.now()
